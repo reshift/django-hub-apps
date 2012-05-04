@@ -1,5 +1,9 @@
-requirements
+*requirements*
 
-taggit
-AutoSlugField
-bleach
+django-taggit
+
+django-AutoSlugField
+
+django-bleach
+
+django-mptt
