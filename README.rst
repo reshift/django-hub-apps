@@ -1,9 +1,1 @@
-*requirements*
-
-django-taggit
-
-django-AutoSlugField
-
-django-bleach
-
-django-mptt
+http://readthedocs.org/docs/django-hub-apps/en/latest/
