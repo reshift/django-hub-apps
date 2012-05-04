@@ -32,5 +32,5 @@ setup(name='django-hub-apps',
     description='Django Hub Apps',
     author='Sjoerd Arendsen',
     url='https://github.com/hub-nl/django-hub-apps',
-    install_requires=('taggit', 'bleach', 'mptt', 'autoslug',),
+    install_requires=('django-taggit', 'bleach', 'django-mptt', 'django-autoslug',),
     packages=packages)
