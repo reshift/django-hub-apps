@@ -11,6 +11,7 @@ from hub.core.fields import RichTextField
 from taggit.managers import TaggableManager
 from autoslug import AutoSlugField
 from mptt.models import MPTTModel, TreeForeignKey
+from mptt.managers import TreeManager
 
 class MetaData(models.Model):
     """
@@ -99,7 +100,7 @@ class Displayable(MetaData):
         blank=True, null=True)
 
     objects = DisplayableManager()
-    search_fields = {"keywords": 10, "title": 5}
+    search_fields = {"title": 5,}
 
     class Meta:
       abstract = True
@@ -114,8 +115,10 @@ class Displayable(MetaData):
           self.publish_date = now()
       super(Displayable, self).save(*args, **kwargs)
 
-class Orderable(models.Model):
+class Orderable(MPTTModel):
   parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
+
+  tree = TreeManager()
 
   class Meta:
     abstract = True
