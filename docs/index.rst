@@ -1,5 +1,5 @@
 .. django-hub-apps documentation master file, created by
-   sphinx-quickstart on Fri May  4 15:18:35 2012.
+   sphinx-quickstart on Fri May  4 16:30:33 2012.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 

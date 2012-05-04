@@ -16,3 +16,5 @@ htmlcov
 #fixtures/*/*.json
 *.json
 fixtures/*.json
+docs/_build/
+docs/Makefile
