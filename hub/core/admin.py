@@ -20,11 +20,13 @@ class CoreAdmin(admin.ModelAdmin):
         Admin class.
         """
         super(CoreAdmin, self).__init__(*args, **kwargs)
-        print self.extra_fieldsets
         if self.extra_fieldsets is not None:
-            print "yo"
             self.fieldsets = deepcopy(self.fieldsets) + self.extra_fieldsets
 
+        self.fieldsets = deepcopy(self.fieldsets)
+        for field in reversed(self.model._meta.fields):
+            #if field not in Page._meta.fields and field.name != "page_ptr":
+            self.fieldsets[0][1]["fields"].insert(3, field.name)
 
 class DisplayableAdmin(CoreAdmin):
     """

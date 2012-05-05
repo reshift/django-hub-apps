@@ -6,17 +6,13 @@
 Welcome to django-hub-apps's documentation!
 ===========================================
 
-Contents:
+Some basic Django apps to get your project started.
+
+Installation & Setup
+--------------------
 
 .. toctree::
    :maxdepth: 2
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+   Installation & Setup
+   Models
