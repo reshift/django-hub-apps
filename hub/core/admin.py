@@ -12,13 +12,6 @@ class CoreAdmin(admin.ModelAdmin):
     extra_fieldsets = None
 
     def __init__(self, *args, **kwargs):
-        """
-        For ``Page`` subclasses that are registered with an Admin class
-        that doesn't implement fieldsets, add any extra model fields
-        to this instance's fieldsets. This mimics Django's behaviour of
-        adding all model fields when no fieldsets are defined on the
-        Admin class.
-        """
         super(CoreAdmin, self).__init__(*args, **kwargs)
         if self.extra_fieldsets is not None:
             self.fieldsets = deepcopy(self.fieldsets) + self.extra_fieldsets
@@ -26,7 +19,8 @@ class CoreAdmin(admin.ModelAdmin):
         self.fieldsets = deepcopy(self.fieldsets)
         for field in reversed(self.model._meta.fields):
             #if field not in Page._meta.fields and field.name != "page_ptr":
-            self.fieldsets[0][1]["fields"].insert(3, field.name)
+            if getattr(instance, field.name) not None:
+                self.fieldsets[0][1]["fields"].insert(3, field.name)
 
 class DisplayableAdmin(CoreAdmin):
     """
