@@ -30,7 +30,7 @@ for dirpath, dirnames, filenames in os.walk(package_dir):
 setup(name='django-hub-apps',
     version='0.0.1',
     description='Django Hub Apps',
-    long_description = read('README.rst'),
+    #long_description = read('README.rst'),
     author='Sjoerd Arendsen',
     url='https://github.com/hub-nl/django-hub-apps',
     install_requires=('django-taggit', 'bleach', 'django-mptt', 'django-autoslug',),
