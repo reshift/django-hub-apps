@@ -4,6 +4,8 @@ from django.db import models
 from django.db.models.base import ModelBase
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.conf import settings
+from django.utils.html import strip_tags
+from datetime import *
 
 from hub.core.managers import *
 from hub.core.fields import RichTextField
@@ -12,62 +14,6 @@ from taggit.managers import TaggableManager
 from autoslug import AutoSlugField
 from mptt.models import MPTTModel, TreeForeignKey
 from mptt.managers import TreeManager
-
-class MetaData(models.Model):
-    """
-    Abstract model that provides meta data for content.
-    """
-
-    meta_description = models.TextField(_("Description"), blank=True)
-    meta_keywords = models.CharField(max_length=255, verbose_name=_("Keywords"))
-
-    class Meta:
-      abstract = True
-
-    def save(self, *args, **kwargs):
-      """
-      Set the description field on save.
-      """
-      if self.meta_description == "":
-        self.meta_description = strip_tags(self.meta_description_from_content())
-      super(MetaData, self).save(*args, **kwargs)
-
-    def description_from_content(self):
-        """
-        Returns the first block or sentence of the first content-like
-        field.
-        """
-        description = ""
-        # Use the first RichTextField, or TextField if none found.
-        for field_type in (RichTextField, models.TextField):
-            if not description:
-                for field in self._meta.fields:
-                    if isinstance(field, field_type) and \
-                        field.name != "description":
-                        description = getattr(self, field.name)
-                        if description:
-                            break
-        # Fall back to the title if description couldn't be determined.
-        if not description:
-            description = unicode(self)
-        # Strip everything after the first block or sentence.
-        ends = ("</p>", "<br />", "<br/>", "<br>", "</ul>",
-                "\n", ". ", "! ", "? ")
-        for end in ends:
-            pos = description.lower().find(end)
-            if pos > -1:
-                description = TagCloser(description[:pos]).html
-                break
-        else:
-            description = truncatewords_html(description, 100)
-        return description
-
-CONTENT_STATUS_DRAFT = 1
-CONTENT_STATUS_PUBLISHED = 2
-CONTENT_STATUS_CHOICES = (
-    (CONTENT_STATUS_DRAFT, _("Draft")),
-    (CONTENT_STATUS_PUBLISHED, _("Published")),
-)
 
 class Featurable(models.Model):
   featured   = models.BooleanField(default=False, verbose_name='Featured')
@@ -84,7 +30,14 @@ class Featurable(models.Model):
   admin_is_featured.short_description = 'Featured?'
   admin_is_featured.allow_tags = True    
 
-class Displayable(MetaData):
+CONTENT_STATUS_DRAFT = 1
+CONTENT_STATUS_PUBLISHED = 2
+CONTENT_STATUS_CHOICES = (
+    (CONTENT_STATUS_DRAFT, _("Draft")),
+    (CONTENT_STATUS_PUBLISHED, _("Published")),
+)
+
+class Displayable(models.Model):
     """
     Abstract model that provides features of a visible page on the
     website such as publishing fields.
@@ -94,7 +47,7 @@ class Displayable(MetaData):
         choices=CONTENT_STATUS_CHOICES, default=CONTENT_STATUS_PUBLISHED)
     publish_date = models.DateTimeField(_("Published from"),
         help_text=_("With published checked, won't be shown until this time"),
-        blank=True, null=True)
+        default=datetime.now())
     expiry_date = models.DateTimeField(_("Expires on"),
         help_text=_("With published checked, won't be shown after this time"),
         blank=True, null=True)
@@ -104,16 +57,6 @@ class Displayable(MetaData):
 
     class Meta:
       abstract = True
-
-    def save(self, *args, **kwargs):
-      """
-      Set default for ``publish_date``. We can't use ``auto_add`` on
-      the field as it will be blank when a blog post is created from
-      the quick blog form in the admin dashboard.
-      """
-      if self.publish_date is None:
-          self.publish_date = now()
-      super(Displayable, self).save(*args, **kwargs)
 
 class Orderable(MPTTModel):
   parent = TreeForeignKey('self', null=True, blank=True, related_name='children')

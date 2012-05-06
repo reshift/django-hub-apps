@@ -16,12 +16,13 @@ class CoreAdmin(admin.ModelAdmin):
         if self.extra_fieldsets is not None:
             self.fieldsets = deepcopy(self.fieldsets) + self.extra_fieldsets
 
-        self.fieldsets = deepcopy(self.fieldsets)
-        for field in reversed(self.model._meta.fields):
+        #self.fieldsets = deepcopy(self.fieldsets)
+        #for field in reversed(self.model._meta.fields):
             #if field not in Page._meta.fields and field.name != "page_ptr":
-            print field
-            if field is not None:
-                self.fieldsets[0][1]["fields"].insert(3, field.name)
+            #print field.name
+
+            #if field is not None and field.name != "id" and field.editable:
+                #self.fieldsets[0][1]["fields"].insert(3, field.name)
 
 class DisplayableAdmin(CoreAdmin):
     """
@@ -38,9 +39,5 @@ class DisplayableAdmin(CoreAdmin):
     fieldsets = (
         (None, {
             "fields": ["title", "slug", "status", "publish_date", "expiry_date",],
-        }),
-        (_("Meta data"), {
-            "fields": [("meta_description",), "meta_keywords"],
-            "classes": ("collapse-closed",)
         }),
     )
