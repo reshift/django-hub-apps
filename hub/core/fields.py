@@ -28,8 +28,8 @@ class RichTextField(models.TextField):
       formfield = super(RichTextField, self).formfield(**kwargs)
       return formfield
 
-  def clean(self, value, model_instance):
-    """
-    Remove potentially dangerous HTML tags and attributes.
-    """
-    return clean(value, settings.RICHTEXT_ALLOWED_TAGS, settings.RICHTEXT_ALLOWED_ATTRIBUTES)
+  """
+  Remove potentially dangerous HTML tags and attributes.
+  """
+  #def clean(self, value, model_instance):
+    #return clean(value, settings.RICHTEXT_ALLOWED_TAGS, settings.RICHTEXT_ALLOWED_ATTRIBUTES)

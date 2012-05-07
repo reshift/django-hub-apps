@@ -29,7 +29,7 @@ class DisplayableAdmin(CoreAdmin):
     Admin class for subclasses of the abstract ``Displayable`` model.
     """
 
-    list_display = ("title", "status",)
+    list_display = ("title", "status", 'publish_date', 'expiry_date',)
     list_display_links = ("title",)
     #list_editable = ("status",)
     list_filter = ("status",)
