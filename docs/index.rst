@@ -8,11 +8,12 @@ Welcome to django-hub-apps's documentation!
 
 Some basic Django apps to get your project started.
 
-Installation & Setup
---------------------
+Contents
+========
 
 .. toctree::
    :maxdepth: 2
+   :glob:
 
-   Installation & Setup
-   Models
+   installation
+   categories
