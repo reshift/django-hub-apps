@@ -15,5 +15,6 @@ Contents
    :maxdepth: 2
    :glob:
 
-   installation
+   overview
    categories
+   node

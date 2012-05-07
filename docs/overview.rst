@@ -18,4 +18,23 @@ To use the hub apps
            "hub.core",
        ]
 
-3. Run ``./manage.py syncdb`` (or ``./manage.py migrate <app>`` if you are using `South <http://south.aeracode.org/>`_)
+Models
+=========================
+
+Featurable
+----------------------------------
+``hub.core.models.Featurable``
+
+Displayable
+----------------------------------
+``hub.core.models.Displayable``
+
+Settings
+=========================
+
+``RICHTEXT_WIDGET_CLASS``
+----------------------------------
+
+The default widget to be used for richtext
+
+Default: ``hub.core.forms.TinyMceWidget``
