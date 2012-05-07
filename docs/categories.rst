@@ -15,7 +15,7 @@ Installation
            "hub.categories",
        ]
 
-2. Run ``./manage.py syncdb categories`` (or ``./manage.py migrate <app>`` if you are using `South <http://south.aeracode.org/>`_)
+2. Run ``./manage.py syncdb categories`` (or ``./manage.py migrate categories`` if you are using `South <http://south.aeracode.org/>`_)
 
 Models
 =========================
@@ -24,7 +24,7 @@ CategoryBase
 ----------------------------------
 ``hub.categories.bases.CategoryBase``
 
-Abstract model proding category basics
+Abstract model providing category basics
 
 Category
 ----------------------------------
