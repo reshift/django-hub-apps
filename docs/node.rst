@@ -18,5 +18,14 @@ Installation
 Models
 =========================
 
-NodeBase
+Node
+----------------------------------
+``hub.node.models.Node``
+
+An abstract model consisting of the Orderable and Displayable models to provide some basic content(page) model
+Features:
+
+  * Orderable features
+  * Displayable features
+  * Auto-generated slug from the title.
 
