@@ -15,6 +15,6 @@ Contents
    :maxdepth: 2
    :glob:
 
-   overview
+   core_overview
    categories
    node
