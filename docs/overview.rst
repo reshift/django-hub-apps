@@ -1,9 +1,6 @@
 ============
-Installation
+Overview
 ============
-
-To use the hub apps
-=========================
 
 1. Install django-hub-apps::
 
@@ -21,13 +18,24 @@ To use the hub apps
 Models
 =========================
 
+Displayable
+----------------------------------
+``hub.core.models.Displayable``
+
+Abstract model that provides features of a visible page on the
+website such as publishing fields.
+
+RichText
+----------------------------------
+``hub.core.models.RichText``
+
+Provides a Rich Text field for managing general content.
+
 Featurable
 ----------------------------------
 ``hub.core.models.Featurable``
 
-Displayable
-----------------------------------
-``hub.core.models.Displayable``
+Abstract feature model
 
 Settings
 =========================

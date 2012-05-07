@@ -21,6 +21,14 @@ Models
 =========================
 
 CategoryBase
+----------------------------------
+``hub.categories.bases.CategoryBase``
+
+Abstract model proding category basics
+
+Category
+----------------------------------
+``hub.categories.defaults.category.Category``
 
 Settings
 =========================
@@ -31,4 +39,3 @@ Settings
 The default category model.
 
 Default: ``hub.categories.defaults.category.Category``
-

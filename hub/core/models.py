@@ -16,6 +16,10 @@ from mptt.models import MPTTModel, TreeForeignKey
 from mptt.managers import TreeManager
 
 class Featurable(models.Model):
+  """
+  Abstract feature model
+  """
+
   featured   = models.BooleanField(default=False, verbose_name='Featured')
 
   class Meta:
