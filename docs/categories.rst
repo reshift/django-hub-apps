@@ -20,7 +20,9 @@ Installation
 Models
 =========================
 
-SETTINGS
+CategoryBase
+
+Settings
 =========================
 
 ``CATEGORY_MODEL``
