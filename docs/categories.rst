@@ -2,7 +2,7 @@
 Categories
 ============
 
-To use categories
+Installation
 =========================
 
 1. Add "hub.categories" to your ``INSTALLED_APPS`` list in your project's ``settings.py`` file.
@@ -19,3 +19,14 @@ To use categories
 
 Models
 =========================
+
+SETTINGS
+=========================
+
+``CATEGORY_MODEL``
+----------------------------------
+
+The default category model.
+
+Default: ``hub.categories.defaults.category.Category``
+
