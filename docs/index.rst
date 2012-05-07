@@ -6,7 +6,7 @@
 Welcome to django-hub-apps's documentation!
 ===========================================
 
-Some basic Django apps to get your project started.
+Some basic Django apps and models to get your project started.
 
 Contents
 ========
