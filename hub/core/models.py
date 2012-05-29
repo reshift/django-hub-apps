@@ -82,3 +82,6 @@ class RichText(models.Model):
 
   class Meta:
     abstract = True
+
+from south.modelsinspector import add_introspection_rules
+add_introspection_rules([], ["^hub\.core\.fields\.RichTextField"])    

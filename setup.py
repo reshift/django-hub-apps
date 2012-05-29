@@ -28,7 +28,7 @@ for dirpath, dirnames, filenames in os.walk(package_dir):
 
 
 setup(name='django-hub-apps',
-    version='0.0.1',
+    version='0.0.2',
     description='Django Hub Apps',
     #long_description = read('README.rst'),
     author='Sjoerd Arendsen',
