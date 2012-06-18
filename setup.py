@@ -33,5 +33,5 @@ setup(name='django-hub-apps',
     #long_description = read('README.rst'),
     author='Sjoerd Arendsen',
     url='https://github.com/hub-nl/django-hub-apps',
-    install_requires=('djutils', 'django-taggit', 'bleach', 'django-mptt', 'django-autoslug',),
+    install_requires=('djutils', 'django-taggit', 'bleach', 'django-mptt', 'django-autoslug', 'south',),
     packages=packages)
